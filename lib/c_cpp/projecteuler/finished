@@ -1,0 +1,10 @@
+#! /usr/bin/env sh
+
+if [[ -d "active/$@" ]]; then
+    mv "active/$@" ./solved
+    echo -e "$(date +%F_%T)\t$@" >> logs/completion.log
+    echo -e "$(date +%F_%T)\tFinish - $@" >> logs/full.log
+    echo "Well done.. for a human."
+else
+    echo "$@ does not exist. To err is but human."
+fi

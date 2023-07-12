@@ -1,0 +1,9 @@
+#! /usr/bin/env sh
+
+if [[ -d "active/$@" ]]; then
+    mv "active/$@" ./abandoned
+    echo -e "$(date +%F_%T)\t$@" >> "logs/abandon.log"
+    echo -e "$(date +%F_%T)\tAbandon - $@" >> "logs/full.log"
+else
+    echo "$@ does not exist."
+fi

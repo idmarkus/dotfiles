@@ -1,0 +1,9 @@
+#! /usr/bin/env sh
+if [[ -d "active/$@" ]]; then
+    #statements
+    echo "Directory for $@ already exists."
+else
+    cp -ri ./canonical "./active/$@"
+    echo -e "$(date +%F_%T)\t$@" >> "logs/creation.log"
+    echo -e "$(date +%F_%T)\tCreate - $@" >> "logs/full.log"
+fi

@@ -1,0 +1,15 @@
+(defun transpose-windows ()
+  "Swap buffers of two windows, iff there are two windows."
+  (interactive)
+  (unless (= 2 (count-windows))
+    (error "error: transpose-windows: there are not exactly two windows"))
+  (let* ((windows (window-list))
+          (w1 (car windows))
+          (w2 (nth 1 windows))
+          (w1b (window-buffer w1))
+          (w2b (window-buffer w2)))
+     (set-window-buffer w1 w2b)
+     (set-window-buffer w2 w1b)))
+(global-set-key (kbd "C-S-o") 'transpose-windows)
+
+(provide 'window-management)
